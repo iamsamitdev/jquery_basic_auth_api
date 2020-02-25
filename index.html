@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Call Basic Auth</title>
+</head>
+<body>
+    <h1>jQeury Basic Auth</h1>
+    <p><button id="btnCall">Call API</button></p>
+    <h4>Result: <span>show data here...</span></h4>
+
+
+    <script   src="https://code.jquery.com/jquery-3.4.1.min.js" 
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+  <script>
+      $(function(){
+        $("button#btnCall").click(function(){
+            // alert("OK");
+            $.ajax({
+                type: "GET",
+                url: "http://localhost/phpslim3basicauth/public/api/users",
+               // dataType: 'json',
+                headers: {
+                    "Authorization": "Basic " + btoa("admin" + ":" + "1234")
+                },
+                success: function (data){
+                    // alert(data); 
+                    $("span").html(data)
+                }
+            });
+        });
+      });
+  </script>
+
+
+</body>
+</html>
